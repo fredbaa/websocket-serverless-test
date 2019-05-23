@@ -1,0 +1,15 @@
+service: serverless-websocket-test
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stage: dev
+  profile: ricenoodles
+  region: ap-southeast-1
+  websocketsApiRouteSelectionExpression: $request.body.action
+
+functions:
+  defaultHandler:
+    handler: handler.defaultHandler
+    events:
+      - websocket: $default
